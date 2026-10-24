@@ -11,7 +11,7 @@ pipeline {
 
         stage('Build and Test') {
             steps {
-                bat 'mvn clean verify'
+                bat 'mvnd clean verify'
             }
         }
 
