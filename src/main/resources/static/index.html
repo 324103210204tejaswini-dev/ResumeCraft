@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4338ca">
+    <title>ResumeCraft | Build your next opportunity</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="#" aria-label="ResumeCraft home">
+            <span class="brand-mark">R</span>
+            <span>ResumeCraft</span>
+        </a>
+        <div class="header-note"><span class="status-dot"></span> Your next opportunity starts here</div>
+    </header>
+
+    <main class="app-shell">
+        <section class="intro">
+            <div>
+                <p class="eyebrow">YOUR CAREER, PRESENTED BEAUTIFULLY</p>
+                <h1>Build a resume that <span>opens doors.</span></h1>
+                <p class="intro-copy">Add your details, choose a style, and create a polished resume ready to share.</p>
+            </div>
+            <div class="intro-badge"><span>✦</span><div><strong>Simple. Clean. Yours.</strong><small>Live preview as you type</small></div></div>
+        </section>
+
+        <div class="workspace">
+            <section class="editor-card card">
+                <div class="card-heading">
+                    <div class="heading-icon">✎</div>
+                    <div><h2>Your details</h2><p>Fill in the sections below to build your resume.</p></div>
+                </div>
+
+                <form id="resumeForm">
+                    <div class="form-grid">
+                        <div class="field full-width">
+                            <label for="name">Full name <span class="required">*</span></label>
+                            <input id="name" type="text" placeholder="e.g. Tejaswini Sidagam" required>
+                        </div>
+                        <div class="field">
+                            <label for="email">Email address <span class="required">*</span></label>
+                            <input id="email" type="email" placeholder="you@example.com" required>
+                        </div>
+                        <div class="field">
+                            <label for="phone">Phone number</label>
+                            <input id="phone" type="tel" placeholder="+91 98765 43210">
+                        </div>
+                        <div class="field full-width">
+                            <label for="location">Location</label>
+                            <input id="location" type="text" placeholder="City, State">
+                        </div>
+                        <div class="field full-width">
+                            <label for="summary">Professional summary</label>
+                            <textarea id="summary" rows="4" placeholder="A short introduction about your strengths and career goals..."></textarea>
+                            <small class="field-hint">Aim for 2–4 concise sentences.</small>
+                        </div>
+                        <div class="field full-width education-editor">
+                            <div class="section-editor-heading">
+                                <div>
+                                    <label>Education</label>
+                                    <small class="field-hint">Add your most recent qualification first. All fields are optional.</small>
+                                </div>
+                                <button type="button" id="addEducationButton" class="button button-secondary add-entry-button">+ Add education</button>
+                            </div>
+                            <div id="educationEntries" class="entry-list"></div>
+                        </div>
+                        <div class="field full-width experience-editor">
+                            <div class="section-editor-heading">
+                                <div>
+                                    <label>Work Experience &amp; Internships</label>
+                                    <small class="field-hint">Add roles from most recent to oldest. Include measurable achievements where possible.</small>
+                                </div>
+                                <button type="button" id="addExperienceButton" class="button button-secondary add-entry-button">+ Add experience</button>
+                            </div>
+                            <div id="experienceEntries" class="entry-list"></div>
+                        </div>
+                        <div class="field full-width personal-details-heading">
+                            <h3>Personal Details <span class="optional-label">Optional</span></h3>
+                            <small class="field-hint">Add only details you want to share. Date of birth and nationality are optional; avoid sensitive ID numbers.</small>
+                        </div>
+                        <div class="field">
+                            <label for="dateOfBirth">Date of birth</label>
+                            <input id="dateOfBirth" type="date">
+                        </div>
+                        <div class="field">
+                            <label for="nationality">Nationality</label>
+                            <input id="nationality" type="text" placeholder="e.g., Indian">
+                        </div>
+                        <div class="field full-width">
+                            <label for="linkedin">LinkedIn profile</label>
+                            <input id="linkedin" type="url" placeholder="https://www.linkedin.com/in/your-profile">
+                        </div>
+                        <div class="field full-width">
+                            <label for="github">GitHub profile</label>
+                            <input id="github" type="url" placeholder="https://github.com/your-username">
+                        </div>
+                        <div class="field full-width">
+                            <label for="portfolio">Portfolio website</label>
+                            <input id="portfolio" type="url" placeholder="https://your-portfolio.com">
+                        </div>
+                        <div class="field full-width">
+                            <label for="address">Address (optional)</label>
+                            <input id="address" type="text" placeholder="City, State or region (avoid full home address)">
+                        </div>
+                        <div class="field full-width">
+                            <label for="languages">Languages</label>
+                            <textarea id="languages" rows="2" placeholder="English (Professional), Telugu (Native), Hindi (Conversational)"></textarea>
+                        </div>
+                        <div class="field full-width">
+                            <label for="software">Software &amp; tools</label>
+                            <textarea id="software" rows="2" placeholder="Excel, Git, Docker, AWS, Figma, AutoCAD..."></textarea>
+                        </div>
+                        <div class="field full-width">
+                            <label for="skills">Skills</label>
+                            <textarea id="skills" rows="3" placeholder="Java, Python, SQL, Communication, Project Management..."></textarea>
+                        </div>
+                        <div class="field full-width project-editor">
+                            <div class="section-editor-heading">
+                                <div>
+                                    <label>Projects</label>
+                                    <small class="field-hint">Showcase academic, personal, or hackathon projects with the tools you used.</small>
+                                </div>
+                                <button type="button" id="addProjectButton" class="button button-secondary add-entry-button">+ Add project</button>
+                            </div>
+                            <div id="projectEntries" class="entry-list"></div>
+                        </div>
+                        <div class="field full-width certification-editor">
+                            <div class="section-editor-heading"><div><label>Certifications</label><small class="field-hint">Add each certification separately with its issuer and date.</small></div><button type="button" id="addCertificationButton" class="button button-secondary add-entry-button">+ Add certification</button></div>
+                            <div id="certificationEntries" class="entry-list"></div>
+                        </div>
+                        <div class="field full-width achievement-editor">
+                            <div class="section-editor-heading"><div><label>Achievements &amp; Awards</label><small class="field-hint">Add awards, competitions, scholarships, or other accomplishments.</small></div><button type="button" id="addAchievementButton" class="button button-secondary add-entry-button">+ Add achievement</button></div>
+                            <div id="achievementEntries" class="entry-list"></div>
+                        </div>
+                        <div class="field full-width">
+                            <label for="strengths">Strengths</label>
+                            <textarea id="strengths" rows="2" placeholder="Problem-solving, communication, teamwork, adaptability..."></textarea>
+                        </div>
+                        <div class="field full-width">
+                            <label for="interests">Interests</label>
+                            <textarea id="interests" rows="2" placeholder="Relevant professional or personal interests"></textarea>
+                        </div>
+                    </div>
+                    <template id="certificationEntryTemplate"><div class="entry-card certification-entry"><div class="entry-card-top"><strong class="entry-title">Certification entry</strong><button type="button" class="remove-entry-button" aria-label="Remove certification">Remove</button></div><div class="entry-fields"><div class="field full-width"><label>Certification name</label><input type="text" data-certification-field="name" placeholder="e.g. AWS Certified Cloud Practitioner"></div><div class="field"><label>Issuing organization</label><input type="text" data-certification-field="issuer" placeholder="e.g. Amazon Web Services"></div><div class="field"><label>Date / Year</label><input type="text" data-certification-field="date" placeholder="e.g. Sep 2026"></div><div class="field full-width"><label>Credential link (optional)</label><input type="url" data-certification-field="link" placeholder="https://..."></div></div></div></template>
+                    <template id="achievementEntryTemplate"><div class="entry-card achievement-entry"><div class="entry-card-top"><strong class="entry-title">Achievement entry</strong><button type="button" class="remove-entry-button" aria-label="Remove achievement">Remove</button></div><div class="entry-fields"><div class="field full-width"><label>Achievement title</label><input type="text" data-achievement-field="title" placeholder="e.g. First Prize — Spell Bee"></div><div class="field full-width"><label>Description (optional)</label><textarea rows="2" data-achievement-field="description" placeholder="Add context, result, or recognition."></textarea></div><div class="field"><label>Organization / Event (optional)</label><input type="text" data-achievement-field="organization" placeholder="School, college, event"></div><div class="field"><label>Date / Year (optional)</label><input type="text" data-achievement-field="date" placeholder="e.g. 2025"></div></div></div></template>
+                    <template id="projectEntryTemplate">
+                        <div class="entry-card project-entry">
+                            <div class="entry-card-top">
+                                <strong class="entry-title">Project entry</strong>
+                                <button type="button" class="remove-entry-button" aria-label="Remove project">Remove</button>
+                            </div>
+                            <div class="entry-fields">
+                                <div class="field full-width"><label>Project title</label><input type="text" data-project-field="title" placeholder="e.g. MediQueue — Hospital Queue Management"></div>
+                                <div class="field full-width"><label>Technologies used</label><input type="text" data-project-field="technologies" placeholder="e.g. Python, Flask, MySQL"></div>
+                                <div class="field full-width"><label>Project description</label><textarea rows="3" data-project-field="description" placeholder="What problem does it solve? What did you build? Use a new line for each point."></textarea></div>
+                                <div class="field"><label>GitHub link (optional)</label><input type="url" data-project-field="github" placeholder="https://github.com/username/project"></div>
+                                <div class="field"><label>Live demo link (optional)</label><input type="url" data-project-field="demo" placeholder="https://your-demo.example"></div>
+                            </div>
+                        </div>
+                    </template>
+                    <template id="educationEntryTemplate">
+                        <div class="entry-card education-entry">
+                            <div class="entry-card-top">
+                                <strong class="entry-title">Education entry</strong>
+                                <button type="button" class="remove-entry-button" aria-label="Remove education entry">Remove</button>
+                            </div>
+                            <div class="entry-fields">
+                                <div class="field">
+                                    <label>Degree / Qualification</label>
+                                    <input type="text" data-education-field="degree" placeholder="e.g. B.Tech in Computer Science">
+                                </div>
+                                <div class="field">
+                                    <label>Institution</label>
+                                    <input type="text" data-education-field="institution" placeholder="College or school name">
+                                </div>
+                                <div class="field">
+                                    <label>Graduation year</label>
+                                    <input type="text" inputmode="numeric" data-education-field="year" placeholder="e.g. 2027">
+                                </div>
+                                <div class="field">
+                                    <label>CGPA / Percentage</label>
+                                    <input type="text" data-education-field="score" placeholder="e.g. 9.3 CGPA or 92%">
+                                </div>
+                                <div class="field full-width">
+                                    <label>Location</label>
+                                    <input type="text" data-education-field="location" placeholder="City, State (optional)">
+                                </div>
+                                <div class="field full-width">
+                                    <label>Relevant details (optional)</label>
+                                    <textarea rows="2" data-education-field="details" placeholder="Relevant coursework, honors, or specialization"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                    <template id="experienceEntryTemplate">
+                        <div class="entry-card experience-entry">
+                            <div class="entry-card-top">
+                                <strong class="entry-title">Experience entry</strong>
+                                <button type="button" class="remove-entry-button" aria-label="Remove experience entry">Remove</button>
+                            </div>
+                            <div class="entry-fields">
+                                <div class="field"><label>Job title / Role</label><input type="text" data-experience-field="role" placeholder="e.g. Software Engineering Intern"></div>
+                                <div class="field"><label>Company / Organization</label><input type="text" data-experience-field="company" placeholder="Company name"></div>
+                                <div class="field"><label>Start date</label><input type="text" data-experience-field="startDate" placeholder="e.g. Jun 2025"></div>
+                                <div class="field"><label>End date</label><input type="text" data-experience-field="endDate" placeholder="e.g. Aug 2025 or Present"></div>
+                                <div class="field full-width"><label>Location (optional)</label><input type="text" data-experience-field="location" placeholder="City, State or Remote"></div>
+                                <div class="field full-width"><label>Responsibilities</label><textarea rows="3" data-experience-field="responsibilities" placeholder="Describe your main responsibilities; use a new line for each point."></textarea></div>
+                                <div class="field full-width"><label>Achievements (optional)</label><textarea rows="2" data-experience-field="achievements" placeholder="Mention measurable results, improvements, or recognition."></textarea></div>
+                            </div>
+                        </div>
+                    </template>
+                    <div class="editor-actions">
+                        <button type="submit" class="button button-primary">↗ Update resume</button>
+                        <button type="button" id="saveButton" class="button button-secondary">Save details</button>
+                        <button type="button" id="clearButton" class="button button-quiet">Clear</button>
+                    </div>
+                    <p class="privacy-note">🔒 Your details are saved in this browser only.</p>
+                </form>
+            </section>
+
+            <section class="preview-card card">
+                <div class="preview-topbar">
+                    <div class="card-heading compact">
+                        <div class="heading-icon preview-icon">▤</div>
+                        <div><h2>Live preview</h2><p>Your resume, as it will appear on the page.</p></div>
+                    </div>
+                    <div class="download-actions"><button type="button" id="downloadButton" class="button button-primary pdf-button">↓ Save as PDF</button><button type="button" id="downloadWordButton" class="button button-secondary pdf-button">↓ Download Word</button></div>
+                </div>
+                <div class="template-toolbar">
+                    <label for="templateSelect">Resume style</label>
+                    <select id="templateSelect">
+                        <option value="professional">Professional</option>
+                        <option value="modern">Modern</option>
+                        <option value="minimalist">Minimalist</option>
+                        <option value="creative">Creative</option>
+                        <option value="student">Student / Fresher</option>
+                    </select>
+                    <span class="paper-label">A4 DOCUMENT</span>
+                </div>
+
+                <div class="paper-stage">
+                    <article id="resumePreview" class="resume professional">
+                        <header class="resume-heading">
+                            <h1 id="previewName">Your Name</h1>
+                            <div class="contact">
+                                <span id="previewEmail">your@email.com</span>
+                                <span id="previewPhone"></span>
+                                <span id="previewLocation"></span>
+                            </div>
+                        </header>
+                        <section class="resume-section" id="summarySection">
+                            <h3>Professional Summary</h3>
+                            <p id="previewSummary">Your professional summary will appear here.</p>
+                        </section>
+                        <section class="resume-section" id="educationSection">
+                            <h3>Education</h3>
+                            <div id="previewEducation" class="education-preview-list"></div>
+                        </section>
+                        <section class="resume-section" id="experienceSection">
+                            <h3>Work Experience &amp; Internships</h3>
+                            <div id="previewExperience" class="experience-preview-list"></div>
+                        </section>
+                        <section class="resume-section" id="personalDetailsSection">
+                            <h3>Additional Details</h3>
+                            <p id="previewPersonalDetails"></p>
+                        </section>
+                        <section class="resume-section" id="languagesSection">
+                            <h3>Languages</h3>
+                            <p id="previewLanguages"></p>
+                        </section>
+                        <section class="resume-section" id="softwareSection">
+                            <h3>Software &amp; Tools</h3>
+                            <p id="previewSoftware"></p>
+                        </section>
+                        <section class="resume-section" id="skillsSection">
+                            <h3>Skills</h3>
+                            <p id="previewSkills">Your skills will appear here.</p>
+                        </section>
+                        <section class="resume-section" id="projectsSection">
+                            <h3>Projects</h3>
+                            <div id="previewProjects" class="project-preview-list"></div>
+                        </section>
+                        <section class="resume-section" id="certificationsSection">
+                            <h3>Certifications</h3>
+                            <div id="previewCertifications" class="structured-preview-list"></div>
+                        </section>
+                        <section class="resume-section" id="accomplishmentsSection">
+                            <h3>Accomplishments &amp; Awards</h3>
+                            <div id="previewAccomplishments" class="structured-preview-list"></div>
+                        </section>
+                        <section class="resume-section" id="strengthsSection">
+                            <h3>Strengths</h3>
+                            <p id="previewStrengths"></p>
+                        </section>
+                        <section class="resume-section" id="interestsSection">
+                            <h3>Interests</h3>
+                            <p id="previewInterests"></p>
+                        </section>
+                    </article>
+                </div>
+                <p class="preview-footnote">Tip: Choose <strong>Save as PDF</strong> and select A4 paper size in the print dialog.</p>
+            </section>
+        </div>
+        <footer class="site-footer">Made with care by <strong>ResumeCraft</strong> <span>•</span> Your next chapter begins here.</footer>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/html-docx-js@0.3.1/dist/html-docx.js"></script>
+    <script src="/script.js"></script>
+</body>
+</html>
