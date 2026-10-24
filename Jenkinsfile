@@ -23,7 +23,9 @@ pipeline {
 
         stage('Check Kubernetes') {
             steps {
-                bat 'kubectl version --client'
+                bat 'where kubectl'
+                bat 'kubectl config current-context'
+                bat 'kubectl config view --minify'
                 bat 'kubectl get deployments'
             }
         }
