@@ -636,7 +636,6 @@ if (downloadWordButton) downloadWordButton.addEventListener("click", () => {
     const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><style>${styles}</style></head><body>${clone.outerHTML}</body></html>`;
     try { const blob = window.htmlDocx.asBlob(html, {orientation: "portrait", margins: {top: 720, right: 720, bottom: 720, left: 720}}); const url = URL.createObjectURL(blob); const a = document.createElement("a"); a.href = url; a.download = `${(document.getElementById("name")?.value || "Resume").trim().replace(/[^a-z0-9_-]+/gi, "_")}_ResumeCraft.docx`; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1500); } catch (error) { console.error("Word export failed:", error); alert("Unable to create the Word document. Please try again."); }
 });
-
 const clearButton = document.getElementById("clearButton");
 if (clearButton) {
     clearButton.addEventListener("click", () => {
@@ -655,7 +654,6 @@ if (clearButton) {
         updatePreview();
     });
 }
-
 loadSavedDetails();
 loadSavedTemplate();
 updatePreview();
